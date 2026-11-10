@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>nowhere | 今泉</title>
+<meta name="description" content="福岡・今泉のnowhere。ストウブで炊き上げる看板ご飯と、ワインに寄り添う料理のお店。">
+<meta name="theme-color" content="#5E1A28">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bordeaux:#5E1A28;--bordeaux-deep:#3F0F1A;--bordeaux-soft:#7A2D3C;
+  --wine-tint:#F3E6E4;--cream:#FAF5EE;--paper:#FFFDF9;--ink:#2B1D1F;--muted:#8A7473;
+  --gold:#B8925A;--line:#E8DAD3;--radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:"Zen Kaku Gothic New",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.app{max-width:560px;margin:0 auto;min-height:100vh;background:var(--cream);position:relative}
+.view[hidden]{display:none}
+
+/* ---------- 共通パーツ ---------- */
+.img{
+  background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 60%),linear-gradient(160deg,var(--bordeaux-soft),var(--bordeaux-deep));
+  background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.55);font:italic 500 14px "Cormorant Garamond",serif;
+}
+.ring{display:inline-block;width:22px;height:22px;border:3.5px solid currentColor;border-radius:50%;border-top-color:transparent;transform:rotate(-8deg);flex:none}
+.wordmark{display:inline-flex;align-items:center;gap:8px;font:600 24px/1 "Cormorant Garamond",serif}
+.price{font:600 19px/1 "Cormorant Garamond",serif;color:var(--bordeaux);white-space:nowrap}
+.taxin{display:block;font:400 10.5px/1.6 "Zen Kaku Gothic New";color:var(--muted);white-space:nowrap}
+.ask{font:500 12px "Zen Kaku Gothic New";color:var(--bordeaux)}
+.badges{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:99px;letter-spacing:.04em}
+.badge.rec{background:var(--bordeaux);color:#fff}
+.badge.new{background:var(--gold);color:#fff}
+.badge.red{background:var(--wine-tint);color:var(--bordeaux)}
+.badge.white{background:#F6EED6;color:#7A6224}
+.lang{display:flex;background:rgba(94,26,40,.08);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;color:var(--bordeaux);font:700 11px/1 "Zen Kaku Gothic New";padding:6px 10px;border-radius:99px;cursor:pointer}
+.lang button.on{background:var(--bordeaux);color:#fff}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;border-radius:99px;font:700 14px "Zen Kaku Gothic New";padding:14px 20px}
+.btn.primary{background:var(--bordeaux);color:#fff}
+.btn.ghost{background:transparent;color:var(--bordeaux);border:1px solid var(--bordeaux)}
+
+/* ---------- ヘッダー ---------- */
+.topbar{position:sticky;top:0;z-index:30;background:var(--cream);border-bottom:1px solid var(--line);transform:translateZ(0)}
+.topbar .bar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;gap:10px}
+.topbar .wordmark{color:var(--bordeaux)}
+.topbar .right{display:flex;align-items:center;gap:8px}
+.tel-mini{display:flex;align-items:center;gap:4px;font:700 12px "Zen Kaku Gothic New";color:var(--bordeaux);border:1px solid var(--bordeaux);border-radius:99px;padding:6px 10px}
+.anchors{display:flex;gap:18px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none;font-size:12.5px;font-weight:500;color:var(--muted)}
+.anchors::-webkit-scrollbar{display:none}
+.anchors a{white-space:nowrap;padding-bottom:2px;border-bottom:2px solid transparent}
+.anchors a.on{color:var(--bordeaux);border-color:var(--bordeaux)}
+
+/* ---------- ヒーロー ---------- */
+.hero{position:relative;aspect-ratio:4/5;max-height:78vh;width:100%;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 22px;overflow:hidden}
+.hero .img{position:absolute;inset:0;font-size:22px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(30,6,12,.8))}
+.hero .inner{position:relative;z-index:1}
+.hero .place{font:500 11px/1 "Zen Kaku Gothic New";letter-spacing:.35em;color:var(--gold)}
+.hero h1{font:600 52px/1.1 "Cormorant Garamond",serif;margin-top:10px;display:flex;align-items:center;gap:12px}
+.hero h1 .ring{width:38px;height:38px;border-width:5px}
+.hero .catch{font:500 16px/1.8 "Shippori Mincho",serif;margin-top:10px}
+
+/* ---------- ギャラリー ---------- */
+.gallery{display:flex;gap:8px;overflow-x:auto;padding:16px 16px 0;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gallery::-webkit-scrollbar{display:none}
+.gallery .img{flex:none;width:38%;aspect-ratio:1;border-radius:12px;scroll-snap-align:start}
+
+.intro{padding:26px 22px 0;font:500 14.5px/2.1 "Shippori Mincho",serif;color:#4A3A3B}
+
+/* ---------- セクション ---------- */
+.block{padding:52px 0 0;scroll-margin-top:96px}
+.block-h{text-align:center;margin-bottom:22px}
+.block-h .en{font:italic 500 32px/1 "Cormorant Garamond",serif;color:var(--bordeaux)}
+.block-h .ja{font:500 12px/1 "Zen Kaku Gothic New";color:var(--muted);letter-spacing:.2em;margin-top:8px}
+.block-h .orn{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--gold);margin-top:10px;font-size:10px}
+.block-h .orn span{width:28px;height:1px;background:currentColor}
+
+/* おすすめメニュー */
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px}
+.pick{background:var(--paper);border-radius:16px;overflow:hidden;border:1px solid var(--line);cursor:pointer}
+.pick.wide{grid-column:span 2}
+.pick .img{aspect-ratio:1}
+.pick.wide .img{aspect-ratio:16/9}
+.pick .b{padding:10px 12px 14px}
+.pick .n{font:600 14px/1.5 "Shippori Mincho",serif;margin-top:6px}
+.pick .price{display:block;margin-top:6px}
+.more{margin:20px 16px 0}
+
+/* こだわり */
+.feats{display:grid;gap:16px;padding:0 16px}
+.feat{background:var(--paper);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.feat .img{aspect-ratio:16/10}
+.feat .b{padding:18px 18px 20px}
+.feat .num{font:italic 500 14px "Cormorant Garamond",serif;color:var(--gold)}
+.feat h3{font:600 17px/1.6 "Shippori Mincho",serif;color:var(--bordeaux);margin-top:2px}
+.feat p{font-size:13.5px;color:#4A3A3B;margin-top:8px;line-height:1.95}
+
+/* 店舗情報 */
+.info{margin:0 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.info dl{display:grid;grid-template-columns:96px 1fr}
+.info dt,.info dd{padding:13px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+.info dt{background:var(--wine-tint);color:var(--bordeaux);font-weight:700;font-size:12.5px}
+.info dl > :nth-last-child(-n+2){border-bottom:0}
+.todo{color:#B04A3A;font-size:12px}
+
+/* アクセス */
+.access{margin:0 16px}
+.map{aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--wine-tint)}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.map .ph{height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;padding:20px}
+.access .addr{margin-top:14px;font-size:14px}
+.access .route{margin-top:6px;font-size:13px;color:var(--muted);white-space:pre-line}
+.access .btn{margin-top:14px}
+
+/* FAQ */
+.faq{margin:0 16px;display:grid;gap:10px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0 16px}
+.faq summary{list-style:none;cursor:pointer;padding:15px 0;font-weight:700;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q.";font:600 18px/1.1 "Cormorant Garamond",serif;color:var(--bordeaux)}
+.faq summary::after{content:"+";margin-left:auto;color:var(--bordeaux);font-weight:400;font-size:18px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq .a{padding:0 0 16px 26px;font-size:13.5px;color:#4A3A3B}
+
+footer{margin-top:56px;padding:40px 24px calc(110px + env(safe-area-inset-bottom));background:var(--bordeaux-deep);color:rgba(255,255,255,.85);text-align:center;border-radius:32px 32px 0 0}
+footer .wordmark{color:#fff;font-size:30px}
+footer .ring{width:26px;height:26px;border-width:4px}
+footer .copy{font-size:11px;opacity:.55;margin-top:18px}
+
+/* 下部固定ボタン */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:560px;z-index:35;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--cream);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dock .btn{padding:12px}
+
+/* ---------- メニュー全体ページ ---------- */
+.mhead{position:sticky;top:0;z-index:20;background:var(--cream);padding:12px 0 10px;border-bottom:1px solid var(--line);transform:translateZ(0)}
+.mhead .row1{display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;gap:10px}
+.back{display:flex;align-items:center;gap:4px;border:0;background:none;color:var(--bordeaux);font:700 13px "Zen Kaku Gothic New";cursor:pointer;padding:4px 0}
+.mhead .title{font:italic 500 22px "Cormorant Garamond",serif;color:var(--bordeaux)}
+.search{margin:0 16px 12px;position:relative}
+.search input{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:11px 16px 11px 40px;font:400 14px "Zen Kaku Gothic New";color:var(--ink);outline:none;-webkit-appearance:none}
+.search input:focus{border-color:var(--bordeaux-soft)}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:500 13px/1 "Zen Kaku Gothic New";padding:9px 15px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.chip.on{background:var(--bordeaux);border-color:var(--bordeaux);color:#fff}
+.legend{margin:16px 16px 0;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);display:flex;align-items:center;justify-content:center;gap:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+
+.sig{margin:22px 16px 0;padding:24px 18px 10px;border-radius:24px;position:relative;background:linear-gradient(170deg,var(--bordeaux) 0%,var(--bordeaux-deep) 100%);color:#fff}
+.sig::before{content:"";position:absolute;inset:8px;border:1px solid rgba(184,146,90,.4);border-radius:18px;pointer-events:none}
+.sig .head{text-align:center;margin-bottom:14px}
+.sig .en{font:italic 500 26px/1.1 "Cormorant Garamond",serif}
+.sig .ja{font:500 13px "Shippori Mincho",serif;color:var(--gold);margin-top:6px}
+.sig .serves{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:3px 12px}
+.sig .lead{font-size:12.5px;opacity:.85;margin-top:10px;line-height:1.8}
+.scard{background:rgba(255,255,255,.07);border-radius:16px;padding:16px;margin-bottom:12px;cursor:pointer}
+.scard .img{aspect-ratio:16/9;border-radius:12px;margin-bottom:12px}
+.scard .n{font:600 17px/1.4 "Shippori Mincho",serif}
+.scard .sub{font:italic 500 14px "Cormorant Garamond",serif;opacity:.7}
+.scard .price{color:#fff;margin-top:8px;display:block}
+.scard .taxin{color:rgba(255,255,255,.65)}
+.scard .d{font-size:12.5px;opacity:.85;margin-top:8px;line-height:1.8}
+
+.sec{padding:30px 0 6px;scroll-margin-top:130px}
+.sec h2{display:flex;align-items:center;gap:10px;padding:0 20px;margin-bottom:14px}
+.flower{color:var(--bordeaux);flex:none}
+.en-title{font:600 26px/1 "Cormorant Garamond",serif;color:var(--bordeaux)}
+.ja-title{font:500 12px/1 "Zen Kaku Gothic New";color:var(--muted);letter-spacing:.1em}
+.list{margin:0 16px;background:var(--paper);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.item{display:flex;gap:12px;padding:15px 16px;border-bottom:1px solid var(--line);cursor:pointer}
+.item:last-child{border-bottom:0}
+.item:active{background:var(--wine-tint)}
+.item .img{width:64px;height:64px;border-radius:12px;flex:none}
+.item .txt{flex:1;min-width:0}
+.item .row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.item .n{font:600 15px/1.45 "Shippori Mincho",serif}
+.item .sub{font:italic 500 13px/1.4 "Cormorant Garamond",serif;color:var(--muted)}
+.item .d{font-size:12px;color:var(--muted);margin-top:3px}
+.pr{text-align:right;flex:none}
+.empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;display:none}
+.mfoot{padding:30px 20px calc(40px + env(safe-area-inset-bottom));text-align:center;font-size:11.5px;color:var(--muted)}
+
+/* ---------- 詳細シート ---------- */
+.overlay{position:fixed;inset:0;background:rgba(43,29,31,.5);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.overlay.show{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,100%);width:100%;max-width:560px;background:var(--paper);border-radius:28px 28px 0 0;z-index:50;transition:transform .3s cubic-bezier(.2,.8,.2,1);max-height:88vh;overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
+.sheet.show{transform:translate(-50%,0)}
+.sheet .img{aspect-ratio:16/10;border-radius:28px 28px 0 0;font-size:18px}
+.sheet .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--bordeaux);font-size:18px;cursor:pointer}
+.sheet .body{padding:22px 24px 30px}
+.sheet .n{font:600 21px/1.4 "Shippori Mincho",serif}
+.sheet .sub{font:italic 500 16px "Cormorant Garamond",serif;color:var(--muted)}
+.sheet .price{font-size:26px;display:block;margin:14px 0 2px}
+.sheet .d{font-size:14px;line-height:1.9;color:#4A3A3B;margin-top:12px}
+.sheet .badges{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* 売切・空表示 */
+.badge.so{background:#4A4A4A;color:#fff}
+.item.so,.pick.so,.scard.so{opacity:.55}
+.gallery:empty{display:none}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ================= トップページ ================= -->
+<div class="view" id="home">
+  <header class="topbar">
+    <div class="bar">
+      <a href="#" class="wordmark" data-top><span class="ring"></span>nowhere</a>
+      <div class="right">
+        <a class="tel-mini" id="telMini" href="#">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>TEL
+        </a>
+        <div class="lang" role="group" aria-label="Language"><button data-lang="ja">JP</button><button data-lang="en">EN</button></div>
+      </div>
+    </div>
+    <nav class="anchors" id="anchors">
+      <a href="#s-menu" data-i18n="navMenu"></a>
+      <a href="#s-feat" data-i18n="navFeat"></a>
+      <a href="#s-info" data-i18n="navInfo"></a>
+      <a href="#s-access" data-i18n="navAccess"></a>
+      <a href="#s-faq" data-i18n="navFaq"></a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="img" id="heroImg">nowhere</div>
+    <div class="inner">
+      <p class="place">IMAIZUMI · FUKUOKA</p>
+      <h1><span class="ring"></span>nowhere</h1>
+      <p class="catch" data-i18n="catch"></p>
+    </div>
+  </section>
+
+  <div class="gallery" id="gallery"></div>
+  <p class="intro" data-i18n="intro"></p>
+
+  <section class="block" id="s-menu">
+    <div class="block-h"><div class="en">Menu</div><div class="ja" data-i18n="hMenu"></div><div class="orn"><span></span>✦<span></span></div></div>
+    <div class="picks" id="picks"></div>
+    <div class="more"><button class="btn primary" style="width:100%" data-open-menu><span data-i18n="allMenu"></span> →</button></div>
+  </section>
+
+  <section class="block" id="s-feat">
+    <div class="block-h"><div class="en">Our Story</div><div class="ja" data-i18n="hFeat"></div><div class="orn"><span></span>✦<span></span></div></div>
+    <div class="feats" id="feats"></div>
+  </section>
+
+  <section class="block" id="s-info">
+    <div class="block-h"><div class="en">Information</div><div class="ja" data-i18n="hInfo"></div><div class="orn"><span></span>✦<span></span></div></div>
+    <div class="info"><dl id="infoDl"></dl></div>
+  </section>
+
+  <section class="block" id="s-access">
+    <div class="block-h"><div class="en">Access</div><div class="ja" data-i18n="hAccess"></div><div class="orn"><span></span>✦<span></span></div></div>
+    <div class="access">
+      <div class="map" id="map"></div>
+      <p class="addr" id="addr"></p>
+      <p class="route" id="route"></p>
+      <a class="btn ghost" id="mapBtn" target="_blank" rel="noopener"><span data-i18n="openMap"></span></a>
+    </div>
+  </section>
+
+  <section class="block" id="s-faq">
+    <div class="block-h"><div class="en">FAQ</div><div class="ja" data-i18n="hFaq"></div><div class="orn"><span></span>✦<span></span></div></div>
+    <div class="faq" id="faq"></div>
+  </section>
+
+  <footer>
+    <div class="wordmark"><span class="ring"></span>nowhere</div>
+    <p class="copy">© nowhere All Rights Reserved.</p>
+  </footer>
+
+  <div class="dock">
+    <a class="btn ghost" id="telBtn" href="#"><span data-i18n="call"></span></a>
+    <button class="btn primary" data-open-menu><span data-i18n="seeMenu"></span></button>
+  </div>
+</div>
+
+<!-- ================= メニュー一覧ページ ================= -->
+<div class="view" id="menuView" hidden>
+  <div class="mhead">
+    <div class="row1">
+      <button class="back" data-close-menu>← <span data-i18n="back"></span></button>
+      <span class="title">Food menu</span>
+      <div class="lang" role="group" aria-label="Language"><button data-lang="ja">JP</button><button data-lang="en">EN</button></div>
+    </div>
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" data-i18n-ph="search">
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <main id="menu"></main>
+  <p class="empty" id="empty" data-i18n="empty"></p>
+  <p class="mfoot" data-i18n="note"></p>
+</div>
+
+</div>
+
+<div class="overlay" id="ov"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <div class="img" id="sImg"></div>
+  <button class="close" id="sClose" aria-label="close">×</button>
+  <div class="body">
+    <div class="n" id="sN"></div><div class="sub" id="sSub"></div>
+    <div id="sP"></div>
+    <p class="d" id="sD"></p>
+    <div class="badges" id="sB"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   メニュー・店舗情報は data.json から読み込みます（管理画面 /admin/ で更新）。
+   data.json が読めない時だけ、下の FALLBACK を表示します。
+   ========================================================= */
+const FALLBACK = {"version": 1, "store": {"tel": "", "addressJa": "福岡県福岡市中央区今泉（要確認）", "addressEn": "Imaizumi, Chuo-ku, Fukuoka (TBC)", "routeJa": "西鉄福岡（天神）駅 徒歩◯分（要確認）", "routeEn": "◯ min walk from Nishitetsu-Fukuoka (Tenjin) Sta. (TBC)", "mapEmbed": "", "mapUrl": "", "heroImg": "", "gallery": [], "info": [{"ja": "営業時間", "en": "Hours", "vJa": "要確認", "vEn": "TBC"}, {"ja": "定休日", "en": "Closed", "vJa": "要確認", "vEn": "TBC"}, {"ja": "座席", "en": "Seats", "vJa": "要確認", "vEn": "TBC"}, {"ja": "喫煙", "en": "Smoking", "vJa": "要確認", "vEn": "TBC"}, {"ja": "カード", "en": "Cards", "vJa": "要確認", "vEn": "TBC"}, {"ja": "予約", "en": "Booking", "vJa": "要確認", "vEn": "TBC"}], "faq": [{"qJa": "定休日はいつですか？", "qEn": "When are you closed?", "aJa": "要確認", "aEn": "TBC"}, {"qJa": "予約はできますか？", "qEn": "Can I make a reservation?", "aJa": "要確認", "aEn": "TBC"}, {"qJa": "英語のメニューはありますか？", "qEn": "Do you have an English menu?", "aJa": "はい。このページ右上の「EN」で英語表示に切り替えられます。", "aEn": "Yes. Tap “EN” at the top right of this page."}], "catchJa": "ワインと過ごす、\n少し特別な夜に。", "catchEn": "For a slightly special night,\nwith wine.", "introJa": "今泉の路地に佇む「nowhere」。ストウブで炊き上げる看板のご飯と、ワインに寄り添う一皿を。気取らず、でも少しだけ特別な夜をお過ごしください。", "introEn": "Tucked away in Imaizumi, nowhere serves signature rice slow-cooked in Staub and dishes made to go with wine. Relaxed, yet a little special."}, "feats": [{"img": "", "tJa": "ストウブで炊き上げる、看板のご飯", "tEn": "Signature rice, slow-cooked in Staub", "pJa": "ロブスターと蟹、和牛と山椒。ストウブ鍋でじっくり炊き上げる土鍋ご飯は、お酒と一緒に楽しむためのnowhereの看板です。2〜3名様でどうぞ。", "pEn": "Lobster & crab, or Wagyu & sansho. Our Staub pot rice is made to be shared with drinks — perfect for 2–3."}, {"img": "", "tJa": "一皿ごとに、合わせたいワインを", "tEn": "A wine for every plate", "pJa": "メニューには白・赤それぞれのおすすめペアリングを表示。料理とワインの組み合わせを気軽に楽しめます。", "pEn": "Each dish is marked with a recommended white or red pairing, so matching food and wine is easy."}, {"img": "", "tJa": "福岡と各地の、選び抜いた素材", "tEn": "Carefully chosen ingredients", "pJa": "福岡県産のアスパラ、筑後みのう豚、北海道のエゾ鹿。素材の良さを活かした料理をご用意しています。", "pEn": "Fukuoka-grown asparagus, Chikugo Minou pork and Hokkaido Ezo venison, cooked to let them shine."}], "menu": [{"id": "staub", "signature": true, "ja": "nowhereのストウブご飯", "en": "nowhere's Staub Pot Rice", "servesJa": "2〜3名様", "servesEn": "Serves 2–3", "leadJa": "ストウブ鍋でじっくり炊き上げる、お酒と楽しむための看板ご飯。", "leadEn": "Our signature rice, slow-cooked in a Staub cocotte and made to enjoy with drinks.", "items": [{"ja": "ロブスターと蟹の炊き込みご飯", "en": "Lobster & Crab Rice", "price": 2980, "pickup": true, "tags": ["rec"], "img": "", "dJa": "ロブスターの濃厚な出汁で炊き上げ、蟹をたっぷり混ぜ込みました。ロブスターと蟹の深い旨みが重なる、贅沢なひと鍋。", "dEn": "Rice cooked in a rich lobster broth and generously mixed with crab. A luxurious pot where the deep umami of lobster and crab come together."}, {"ja": "和牛と山椒のそぼろご飯", "en": "Wagyu & Sansho Soboro Rice", "price": 2680, "pickup": true, "tags": ["rec"], "img": "", "dJa": "香港で出会った土鍋ご飯から着想。上質な和牛に爽やかな山椒を合わせ、甘辛いそぼろを山椒が引き締める、nowhereならではのストウブご飯。", "dEn": "Inspired by clay-pot rice we discovered in Hong Kong, combining premium Wagyu with bright Japanese sansho pepper. Sweet-savory minced beef is lifted by sansho – a Staub rice dish unique to nowhere."}], "shortJa": "ストウブご飯", "shortEn": "Staub Rice"}, {"id": "cold", "ja": "冷菜", "en": "Cold Dishes", "items": [{"ja": "本日の鮮魚のたたき", "en": "Today's Seared Fresh Fish (Tataki)", "price": 980, "pair": "white"}, {"ja": "キャロットラペ", "en": "Carrot Rapée", "price": 480}, {"ja": "冷製なすのカルパッチョ", "en": "Chilled Eggplant Carpaccio", "price": 680, "noteJa": "ねぎ生姜ソース", "noteEn": "Scallion & ginger sauce"}, {"ja": "自家製ポークハムと焼き野菜のマリネ", "en": "House-Made Pork Ham with Marinated Grilled Vegetables", "price": 980}, {"ja": "シャルキュトリー盛り合わせ", "en": "Assorted Charcuterie", "price": 1680, "noteJa": "単品でもご注文いただけます", "noteEn": "Also available individually."}, {"ja": "パテ・ド・カンパーニュ", "en": "Pâté de Campagne", "price": 850}, {"ja": "自家製ポークハム", "en": "House-Made Pork Ham", "price": 780}, {"ja": "鴨のスモーク", "en": "Smoked Duck", "price": 780}, {"ja": "いちじくバターサンド（1個）", "en": "Fig Butter Sandwich (1 pc)", "price": 450}, {"ja": "ミックスオリーブのマリネ", "en": "Marinated Mixed Olives", "price": 500}, {"ja": "ズッキーニのピクルス", "en": "Pickled Zucchini", "price": 600}, {"ja": "チーズ3種盛り合わせ", "en": "Assorted 3 Cheeses", "price": 1000, "noteJa": "単品 ¥500〜", "noteEn": "Individual cheeses from ¥500"}, {"ja": "自家製スモークサーモンとアボカドタルタルのフォカッチャ（1個）", "en": "House-Smoked Salmon & Avocado Tartare Focaccia (1 pc)", "price": 480}, {"ja": "自家製フォカッチャ（1枚）", "en": "House-Made Focaccia (1 slice)", "price": 150}]}, {"id": "warm", "ja": "温菜", "en": "Warm Dishes", "items": [{"ja": "甘長とうがらしのフリットとサラミ", "en": "Sweet Shishito Fritters & Salami", "price": 680, "noteJa": "アンチョビガーリック", "noteEn": "Anchovy garlic"}, {"ja": "玉ねぎのロースト", "en": "Roasted Onion", "price": 680}, {"ja": "福岡県産アスパラの天ぷら", "en": "Fukuoka-Grown Asparagus Tempura", "price": 700}, {"ja": "さつまいものニョッキ", "en": "Sweet Potato Gnocchi", "price": 880, "noteJa": "バター醤油", "noteEn": "Butter soy sauce"}, {"ja": "舞茸の天ぷら", "en": "Maitake Mushroom Tempura", "price": 980, "pair": "red", "noteJa": "きのこソース", "noteEn": "Mushroom sauce"}, {"ja": "猪と鹿のキーマ春巻き（1本）", "en": "Wild Boar & Venison Keema Spring Roll (1 pc)", "price": 450}, {"ja": "フライドポテト", "en": "French Fries", "price": 600}, {"ja": "鱈のコロッケ タルタルソース（1個）", "en": "Cod Croquette with Tartar Sauce (1 pc)", "price": 480}]}, {"id": "mains", "ja": "メイン", "en": "Mains", "items": [{"ja": "国産牛すね肉のデミグラス煮込み", "en": "Domestic Beef Shank Braised in Demi-Glace", "price": 1780, "pair": "red", "pickup": true}, {"ja": "nowhereスパイシーグリルチキン", "en": "nowhere Spicy Grilled Chicken", "price": 2180, "pair": "red", "pickup": true}, {"ja": "筑後みのう豚の炭火焼き 200g", "en": "Charcoal-Grilled Chikugo Minou Pork, 200 g", "price": 2400, "pair": "white", "noteJa": "マスタードソース", "noteEn": "Mustard sauce", "pickup": true}, {"ja": "北海道産エゾ鹿のロースト 150g〜", "en": "Roasted Hokkaido Ezo Venison, from 150 g", "priceJa": "¥16 / g", "priceEn": "¥16 / g", "pair": "red", "noteJa": "赤ワインソース", "noteEn": "Red wine sauce", "pickup": true}]}, {"id": "pasta", "ja": "パスタ", "en": "Pasta", "items": [{"ja": "からすみの塩レモンパスタ", "en": "Bottarga Salt-Lemon Pasta", "price": 1380, "noteEn": "Bottarga = cured mullet roe"}, {"ja": "濃厚ボロネーゼ", "en": "Rich Bolognese", "price": 1580}, {"ja": "本日のパスタ", "en": "Today's Pasta", "ask": true, "noteJa": "黒板またはスタッフにお尋ねください", "noteEn": "Please see the chalkboard or ask our staff."}]}, {"id": "dessert", "ja": "デザート", "en": "Dessert", "items": [{"ja": "チーズケーキ", "en": "Cheesecake", "price": 600}]}]};
+let STORE = {}, FEATS = [], MENU = [];
+
+/* ---------- 固定の文言 ---------- */
+const T = {
+  ja:{catch:"ワインと過ごす、<br>少し特別な夜に。",intro:"",
+      navMenu:"メニュー",navFeat:"こだわり",navInfo:"店舗情報",navAccess:"アクセス",navFaq:"よくある質問",
+      hMenu:"おすすめメニュー",hFeat:"お店のこだわり",hInfo:"店舗情報",hAccess:"アクセス",hFaq:"よくある質問",
+      allMenu:"すべてのメニューを見る",seeMenu:"メニューを見る",call:"電話する",openMap:"Googleマップで開く",back:"戻る",
+      mapPh:"地図は準備中です",
+      search:"メニューを探す",empty:"該当するメニューがありません",
+      note:"表示価格は税抜です（下段は税込価格）。<br>アレルギーのある方はスタッフまでお申し付けください。",
+      rec:"おすすめ",new:"NEW",white:"白ワインと",red:"赤ワインと",legend:"おすすめのワインペアリング",taxin:"税込",ask:"スタッフまで",soldout:"本日終了"},
+  en:{catch:"For a slightly special night,<br>with wine.",intro:"",
+      navMenu:"Menu",navFeat:"Our Story",navInfo:"Info",navAccess:"Access",navFaq:"FAQ",
+      hMenu:"Recommended",hFeat:"What we care about",hInfo:"Store information",hAccess:"How to find us",hFaq:"Questions",
+      allMenu:"See full menu",seeMenu:"View menu",call:"Call",openMap:"Open in Google Maps",back:"Back",
+      mapPh:"Map coming soon",
+      search:"Search the menu",empty:"No items found",
+      note:"Prices exclude tax (tax-included price shown below).<br>Please let our staff know of any allergies.",
+      rec:"Recommend",new:"NEW",white:"White",red:"Red",legend:"Recommended wine pairing",taxin:"Tax incl.",ask:"Ask staff",soldout:"Sold out"}
+};
+
+const GLASS = c=>`<svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M2 1h8v3.2C10 6.6 8.2 8 6 8S2 6.6 2 4.2Z" fill="${c}" stroke="currentColor" stroke-width="1"/><path d="M6 8v4.5M3.5 13h5" stroke="currentColor" stroke-width="1" fill="none"/></svg>`;
+const FLOWER = `<svg class="flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="10.5"/><circle cx="12" cy="12" r="2.2"/><path d="M12 3.5c2 3 2 5.5 0 8.5-2-3-2-5.5 0-8.5ZM12 20.5c2-3 2-5.5 0-8.5-2 3-2 5.5 0 8.5ZM3.5 12c3-2 5.5-2 8.5 0-3 2-5.5 2-8.5 0ZM20.5 12c-3-2-5.5-2-8.5 0 3 2 5.5 2 8.5 0Z"/></svg>`;
+
+let lang = "ja";
+try{ lang = localStorage.getItem("nowhere-lang") || (navigator.language.startsWith("ja")?"ja":"en"); }catch(e){}
+
+const $ = s=>document.querySelector(s);
+const $$ = s=>document.querySelectorAll(s);
+const esc = s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const escBr = s=>esc(s).replace(/\n/g,"<br>");
+const L = (o,k)=>o[k+(lang==="ja"?"Ja":"En")];
+const yen = n=>"¥"+Number(n).toLocaleString();
+const nm = o=>esc(o[lang]||o.ja||o.en);
+const other = o=>esc(lang==="ja"?o.en:o.ja);
+const safeUrl = u=>(typeof u==="string" && (/^img\/uploads\/[\w.-]+$/.test(u) || /^https:\/\/[^\s'"()<>\\]+$/.test(u))) ? u : "";
+const bg = src=>{ const u=safeUrl(src); return u?`style="background-image:url('${u}')"`:""; };
+const isTodo = v=>/要確認|TBC/.test(v||"");
+const vis = c=>(c.items||[]).filter(i=>!i.hidden);
+const ALL = ()=>MENU.flatMap(vis);
+
+function badges(it){
+  const out = [];
+  if(it.soldout) out.push(`<span class="badge so">${T[lang].soldout}</span>`);
+  if(it.pair==="white"||it.pair==="red") out.push(`<span class="badge ${it.pair}">${GLASS(it.pair==="red"?"#9B1B30":"#E9D9A6")}${T[lang][it.pair]}</span>`);
+  (it.tags||[]).forEach(t=>{ if(T[lang][t]) out.push(`<span class="badge ${t}">${T[lang][t]}</span>`); });
+  return out.join("");
+}
+function priceHtml(it){
+  if(it.ask) return `<span class="ask">${T[lang].ask}</span>`;
+  const sp = L(it,"price") || it.priceJa; if(sp) return `<span class="price">${esc(sp)}</span>`;
+  if(it.price==null || it.price==="") return "";
+  return `<span class="price">${yen(it.price)}</span><span class="taxin">(${T[lang].taxin} ${yen(Math.round(it.price*1.1))})</span>`;
+}
+
+/* ---------- トップページ描画 ---------- */
+function renderHome(){
+  const c = L(STORE,"catch"), intro = L(STORE,"intro");
+  $$('[data-i18n="catch"]').forEach(el=>el.innerHTML = c?escBr(c):T[lang].catch);
+  $$('[data-i18n="intro"]').forEach(el=>{ el.innerHTML = intro?escBr(intro):""; el.style.display = intro?"":"none"; });
+
+  const hero = $("#heroImg"); const hu = safeUrl(STORE.heroImg);
+  hero.style.backgroundImage = hu?`url('${hu}')`:""; hero.textContent = hu?"":"nowhere";
+  $("#gallery").innerHTML = (STORE.gallery||[]).filter(safeUrl).map(s=>`<div class="img" ${bg(s)}></div>`).join("");
+
+  const picks = ALL().filter(i=>i.pickup);
+  $("#s-menu").style.display = picks.length?"":"none";
+  $("#picks").innerHTML = picks.map((it,i)=>`
+    <div class="pick${i<2?" wide":""}${it.soldout?" so":""}" data-key="${it._k}">
+      <div class="img" ${bg(it.img)}>${safeUrl(it.img)?"":"nowhere"}</div>
+      <div class="b"><div class="badges">${badges(it)}</div><div class="n">${nm(it)}</div>${priceHtml(it)}</div>
+    </div>`).join("");
+
+  $("#s-feat").style.display = FEATS.length?"":"none";
+  $("#feats").innerHTML = FEATS.map((f,i)=>`
+    <article class="feat">${safeUrl(f.img)?`<div class="img" ${bg(f.img)}></div>`:""}
+      <div class="b"><div class="num">— 0${i+1}</div><h3>${esc(L(f,"t"))}</h3><p>${escBr(L(f,"p"))}</p></div></article>`).join("");
+
+  const tel = /^[0-9+\-() ]+$/.test(STORE.tel||"") ? STORE.tel : "";
+  $("#infoDl").innerHTML = (STORE.info||[]).map(r=>{const v=L(r,"v");return `<dt>${nm(r)}</dt><dd class="${isTodo(v)?"todo":""}">${escBr(v)}</dd>`}).join("")
+    + (tel?`<dt>TEL</dt><dd><a href="tel:${tel.replace(/[^0-9+]/g,"")}">${esc(tel)}</a></dd>`:"");
+
+  const emb = /^https:\/\/www\.google\.com\/maps\/embed\?[^\s'"<>\\]+$/.test(STORE.mapEmbed||"") ? STORE.mapEmbed : "";
+  $("#map").innerHTML = emb ? `<iframe src="${esc(emb)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="map"></iframe>` : `<div class="ph">${T[lang].mapPh}</div>`;
+  $("#addr").textContent = L(STORE,"address")||"";
+  $("#route").textContent = L(STORE,"route")||"";
+  const mu = /^https:\/\//.test(STORE.mapUrl||"") ? STORE.mapUrl : "";
+  $("#mapBtn").style.display = mu?"":"none"; $("#mapBtn").href = mu||"#";
+
+  $("#faq").innerHTML = (STORE.faq||[]).map(f=>`<details><summary>${esc(L(f,"q"))}</summary><div class="a">${escBr(L(f,"a"))}</div></details>`).join("");
+  $("#s-faq").style.display = (STORE.faq||[]).length?"":"none";
+
+  ["#telBtn","#telMini"].forEach(s=>{ const a=$(s); if(tel){a.href="tel:"+tel.replace(/[^0-9+]/g,"");a.style.display="";} else a.style.display="none"; });
+  $(".dock").style.gridTemplateColumns = tel?"1fr 1fr":"1fr";
+}
+
+/* ---------- メニューページ描画 ---------- */
+function renderMenuChrome(){
+  $("#legend").innerHTML = `<span class="badge white">${GLASS("#E9D9A6")}${T[lang].white}</span><span class="badge red">${GLASS("#9B1B30")}${T[lang].red}</span><span>${T[lang].legend}</span>`;
+  $("#chips").innerHTML = MENU.filter(c=>vis(c).length).map((c,i)=>`<button class="chip${i===0?" on":""}" data-id="${esc(c.id)}">${esc(L(c,"short")||c[lang]||c.ja)}</button>`).join("");
+  filter();
+}
+function filter(){
+  const q = $("#q").value.trim().toLowerCase();
+  let count = 0;
+  $("#menu").innerHTML = MENU.map(c=>{
+    const items = vis(c).filter(it=>!q || [it.ja,it.en,it.noteJa,it.noteEn,it.dJa,it.dEn].join(" ").toLowerCase().includes(q));
+    count += items.length;
+    if(!items.length) return "";
+    if(c.signature) return `<section class="sig sec" id="${esc(c.id)}">
+      <div class="head"><div class="en">${esc(c.en)}</div>${lang==="ja"?`<div class="ja">${esc(c.ja)}</div>`:""}
+        ${L(c,"serves")?`<span class="serves">${esc(L(c,"serves"))}</span>`:""}${L(c,"lead")?`<p class="lead">${escBr(L(c,"lead"))}</p>`:""}</div>
+      ${items.map(it=>`<div class="scard${it.soldout?" so":""}" data-key="${it._k}">
+        <div class="img" ${bg(it.img)}>${safeUrl(it.img)?"":"nowhere"}</div>
+        <div class="n">${nm(it)}</div><div class="sub">${other(it)}</div>${priceHtml(it)}
+        ${it.soldout?`<div class="badges">${badges(it)}</div>`:""}<p class="d">${escBr(L(it,"d"))}</p></div>`).join("")}
+    </section>`;
+    return `<section class="sec" id="${esc(c.id)}">
+      <h2>${FLOWER}<span class="en-title">${esc(c.en)}</span>${lang==="ja"?`<span class="ja-title">${esc(c.ja)}</span>`:""}</h2>
+      <div class="list">${items.map(it=>`
+        <div class="item${it.soldout?" so":""}" data-key="${it._k}">
+          ${safeUrl(it.img)?`<div class="img" ${bg(it.img)}></div>`:""}
+          <div class="txt">
+            <div class="row"><div><div class="n">${nm(it)}</div><div class="sub">${other(it)}</div></div><div class="pr">${priceHtml(it)}</div></div>
+            ${L(it,"note")?`<div class="d">${esc(L(it,"note"))}</div>`:""}
+            ${badges(it)?`<div class="badges">${badges(it)}</div>`:""}
+          </div>
+        </div>`).join("")}</div>
+    </section>`;
+  }).join("");
+  $("#empty").style.display = count?"none":"block";
+  observe();
+}
+
+function render(){
+  document.documentElement.lang = lang;
+  $$("[data-i18n]").forEach(el=>el.innerHTML=T[lang][el.dataset.i18n]);
+  $$("[data-i18n-ph]").forEach(el=>el.placeholder=T[lang][el.dataset.i18nPh]);
+  $$(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===lang));
+  renderHome(); renderMenuChrome();
+}
+
+/* ---------- 画面切替（#menu で一覧ページ） ---------- */
+let homeY = 0;
+function route(){
+  const menuOpen = location.hash==="#menu";
+  $("#home").hidden = menuOpen; $("#menuView").hidden = !menuOpen;
+  window.scrollTo(0, menuOpen?0:homeY);
+  if(menuOpen) observe();
+}
+window.addEventListener("hashchange",route);
+
+/* ---------- 詳細シート ---------- */
+function openSheet(key){
+  const it = ALL().find(i=>i._k===key); if(!it) return;
+  const s=$("#sImg"), u=safeUrl(it.img); s.style.backgroundImage = u?`url('${u}')`:""; s.textContent = u?"":"nowhere";
+  $("#sN").textContent = it[lang]||it.ja; $("#sSub").textContent = lang==="ja"?it.en:it.ja;
+  $("#sP").innerHTML = priceHtml(it);
+  $("#sD").textContent = L(it,"d") || L(it,"note") || "";
+  $("#sB").innerHTML = badges(it); $("#sB").style.display = badges(it)?"":"none";
+  $("#ov").classList.add("show"); $("#sheet").classList.add("show");
+}
+function closeSheet(){ $("#ov").classList.remove("show"); $("#sheet").classList.remove("show"); }
+
+function scrollToEl(el, offset){
+  window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - offset, behavior:"smooth"});
+}
+
+document.addEventListener("click",e=>{
+  const card = e.target.closest("[data-key]"); if(card) return openSheet(card.dataset.key);
+  if(e.target.closest("[data-open-menu]")){ homeY = window.scrollY; location.hash = "menu"; return; }
+  if(e.target.closest("[data-close-menu]")){ history.length>1 && location.hash==="#menu" ? history.back() : (location.hash=""); return; }
+  if(e.target.closest("[data-top]")){ e.preventDefault(); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  const anc = e.target.closest(".anchors a");
+  if(anc){ e.preventDefault(); const t=$(anc.getAttribute("href")); if(t) scrollToEl(t, $(".topbar").offsetHeight + 4); return; }
+  const chip = e.target.closest(".chip");
+  if(chip){ const t=document.getElementById(chip.dataset.id); if(t){ setActive(chip.dataset.id); lockUntil=Date.now()+900; scrollToEl(t, $(".mhead").offsetHeight + 8); } return; }
+  const lb = e.target.closest(".lang button");
+  if(lb){ lang=lb.dataset.lang; try{localStorage.setItem("nowhere-lang",lang)}catch(e){} render(); }
+});
+$("#ov").onclick = closeSheet; $("#sClose").onclick = closeSheet;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet(); });
+$("#q").addEventListener("input",filter);
+
+/* メニューページ：スクロール連動チップ（ページは動かさずチップ列だけ横移動） */
+let lockUntil = 0, currentId = null;
+function setActive(id){
+  if(id===currentId) return; currentId = id;
+  const wrap = $("#chips");
+  wrap.querySelectorAll(".chip").forEach(c=>{
+    const on = c.dataset.id===id; c.classList.toggle("on",on);
+    if(on) wrap.scrollTo({left: c.offsetLeft - (wrap.clientWidth - c.offsetWidth)/2, behavior:"smooth"});
+  });
+}
+const io = new IntersectionObserver(es=>{
+  if(Date.now() < lockUntil) return;
+  es.forEach(en=>{ if(en.isIntersecting) setActive(en.target.id); });
+},{rootMargin:"-140px 0px -60% 0px"});
+function observe(){ io.disconnect(); currentId=null; $$("#menu .sec").forEach(s=>io.observe(s)); }
+
+/* トップページ：アンカーナビの現在地 */
+const io2 = new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting) $$(".anchors a").forEach(a=>a.classList.toggle("on", a.getAttribute("href")==="#"+en.target.id)); });
+},{rootMargin:"-100px 0px -65% 0px"});
+$$("#home .block").forEach(b=>io2.observe(b));
+
+/* ---------- 起動 ---------- */
+(async function init(){
+  let d = null;
+  try{ const r = await fetch("data.json?v="+Date.now(), {cache:"no-store"}); if(r.ok) d = await r.json(); }catch(e){}
+  d = d || FALLBACK || {store:{},feats:[],menu:[]};
+  STORE = d.store || {}; FEATS = d.feats || [];
+  MENU = (d.menu||[]).map((c,ci)=>({...c, items:(c.items||[]).map((it,ii)=>({...it,_k:ci+"-"+ii}))}));
+  render(); route();
+})();
+</script>
+</body>
+</html>
