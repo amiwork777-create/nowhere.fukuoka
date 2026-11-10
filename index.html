@@ -3,16 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>nowhere | 今泉</title>
-<meta name="description" content="福岡・今泉のnowhere。ストウブで炊き上げる看板ご飯と、ワインに寄り添う料理のお店。">
-<meta name="theme-color" content="#5E1A28">
+<title>nowhere｜今泉のワイン食堂</title>
+<meta name="description" content="福岡・今泉のワイン食堂 nowhere。ストウブで炊き上げる看板ご飯と、ワインに寄り添う料理。メニュー・営業時間・アクセス。">
+<meta name="theme-color" content="#8D3043">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:title" content="nowhere｜今泉のワイン食堂">
+<meta property="og:description" content="福岡・今泉のワイン食堂。ストウブで炊き上げる看板ご飯と、ワインに寄り添う料理。">
+<meta property="og:image" content="img/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bordeaux:#5E1A28;--bordeaux-deep:#3F0F1A;--bordeaux-soft:#7A2D3C;
-  --wine-tint:#F3E6E4;--cream:#FAF5EE;--paper:#FFFDF9;--ink:#2B1D1F;--muted:#8A7473;
+  --bordeaux:#8D3043;--bordeaux-deep:#561A28;--bordeaux-soft:#A5475A;
+  --wine-tint:#F6E9EA;--cream:#FAF5EE;--paper:#FFFDF9;--ink:#2B1D1F;--muted:#8A7473;
   --gold:#B8925A;--line:#E8DAD3;--radius:18px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -204,6 +209,27 @@ footer .copy{font-size:11px;opacity:.55;margin-top:18px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+/* ロゴ */
+.tlogo{height:22px;width:auto;display:block}
+.hero h1 img{height:46px;width:auto;display:block}
+.hero .sub{font:500 13px/1 "Zen Kaku Gothic New";letter-spacing:.2em;margin-top:14px;opacity:.9}
+footer .flogo{height:30px;width:auto;margin:0 auto;display:block}
+.ig-mini{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--bordeaux);color:var(--bordeaux)}
+footer .sns{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:#fff;font-size:13px;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:8px 16px}
+.picks .img,.feat .img,.gallery .img,.item .img,.scard .img,.sheet .img{background-color:var(--bordeaux-deep)}
+/* Instagram */
+.ig-card{margin:0 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.ig-head{display:flex;align-items:center;gap:12px;padding:14px 14px 12px}
+.ig-ava{width:52px;height:52px;border-radius:50%;background:var(--bordeaux);display:flex;align-items:center;justify-content:center;flex:none;padding:3px;box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--gold)}
+.ig-ava img{width:100%;height:auto}
+.ig-name{font-weight:700;font-size:15px}
+.ig-bio{font-size:12px;color:var(--muted);line-height:1.5}
+.ig-follow{margin-left:auto;flex:none;padding:9px 14px;font-size:12.5px}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ig-grid a{display:block;aspect-ratio:1;background:var(--bordeaux-deep) center/cover no-repeat;position:relative}
+.ig-grid a::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .2s}
+.ig-grid a:hover::after{background:rgba(0,0,0,.15)}
+.ig-foot{display:block;text-align:center;padding:14px;font-size:13px;font-weight:700;color:var(--bordeaux)}
 /* 売切・空表示 */
 .badge.so{background:#4A4A4A;color:#fff}
 .item.so,.pick.so,.scard.so{opacity:.55}
@@ -217,20 +243,21 @@ footer .copy{font-size:11px;opacity:.55;margin-top:18px}
 <div class="view" id="home">
   <header class="topbar">
     <div class="bar">
-      <a href="#" class="wordmark" data-top><span class="ring"></span>nowhere</a>
+      <a href="#" data-top aria-label="nowhere トップへ"><img class="tlogo" src="img/logo-bordeaux.png" alt="nowhere"></a>
       <div class="right">
         <a class="tel-mini" id="telMini" href="#">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>TEL
         </a>
+        <a class="ig-mini" id="igMini" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
         <div class="lang" role="group" aria-label="Language"><button data-lang="ja">JP</button><button data-lang="en">EN</button></div>
       </div>
     </div>
     <nav class="anchors" id="anchors">
       <a href="#s-menu" data-i18n="navMenu"></a>
       <a href="#s-feat" data-i18n="navFeat"></a>
+      <a href="#s-insta">Instagram</a>
       <a href="#s-info" data-i18n="navInfo"></a>
       <a href="#s-access" data-i18n="navAccess"></a>
-      <a href="#s-faq" data-i18n="navFaq"></a>
     </nav>
   </header>
 
@@ -238,7 +265,8 @@ footer .copy{font-size:11px;opacity:.55;margin-top:18px}
     <div class="img" id="heroImg">nowhere</div>
     <div class="inner">
       <p class="place">IMAIZUMI · FUKUOKA</p>
-      <h1><span class="ring"></span>nowhere</h1>
+      <h1><img src="img/logo-white.png" alt="nowhere"></h1>
+      <p class="sub" data-i18n="kind"></p>
       <p class="catch" data-i18n="catch"></p>
     </div>
   </section>
@@ -257,6 +285,19 @@ footer .copy{font-size:11px;opacity:.55;margin-top:18px}
     <div class="feats" id="feats"></div>
   </section>
 
+  <section class="block" id="s-insta">
+    <div class="block-h"><div class="en">Instagram</div><div class="ja" data-i18n="hInsta"></div><div class="orn"><span></span>✦<span></span></div></div>
+    <div class="ig-card">
+      <div class="ig-head">
+        <a class="ig-ava" id="igAva" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/logo-white.png" alt=""></a>
+        <div><div class="ig-name" id="igName"></div><div class="ig-bio" data-i18n="igBio"></div></div>
+        <a class="btn primary ig-follow" id="igFollow" target="_blank" rel="noopener"><span data-i18n="follow"></span></a>
+      </div>
+      <div class="ig-grid" id="igGrid"></div>
+      <a class="ig-foot" id="igFoot" target="_blank" rel="noopener"><span data-i18n="igMore"></span> →</a>
+    </div>
+  </section>
+
   <section class="block" id="s-info">
     <div class="block-h"><div class="en">Information</div><div class="ja" data-i18n="hInfo"></div><div class="orn"><span></span>✦<span></span></div></div>
     <div class="info"><dl id="infoDl"></dl></div>
@@ -272,13 +313,10 @@ footer .copy{font-size:11px;opacity:.55;margin-top:18px}
     </div>
   </section>
 
-  <section class="block" id="s-faq">
-    <div class="block-h"><div class="en">FAQ</div><div class="ja" data-i18n="hFaq"></div><div class="orn"><span></span>✦<span></span></div></div>
-    <div class="faq" id="faq"></div>
-  </section>
 
   <footer>
-    <div class="wordmark"><span class="ring"></span>nowhere</div>
+    <img class="flogo" src="img/logo-white.png" alt="nowhere">
+    <div><a class="sns" id="igFooter" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@nowhere.fukuoka</a></div>
     <p class="copy">© nowhere All Rights Reserved.</p>
   </footer>
 
@@ -324,15 +362,15 @@ footer .copy{font-size:11px;opacity:.55;margin-top:18px}
 
 <script>
 /* =========================================================
-   メニュー・店舗情報は data.json から読み込みます（管理画面 /admin/ で更新）。
-   data.json が読めない時だけ、下の FALLBACK を表示します。
+   メニュー・店舗情報はすべて下の FALLBACK の中に入っています。
+   変更は Claude に依頼して、index.html を作り直してください。
    ========================================================= */
-const FALLBACK = {"version": 1, "store": {"tel": "", "addressJa": "福岡県福岡市中央区今泉（要確認）", "addressEn": "Imaizumi, Chuo-ku, Fukuoka (TBC)", "routeJa": "西鉄福岡（天神）駅 徒歩◯分（要確認）", "routeEn": "◯ min walk from Nishitetsu-Fukuoka (Tenjin) Sta. (TBC)", "mapEmbed": "", "mapUrl": "", "heroImg": "", "gallery": [], "info": [{"ja": "営業時間", "en": "Hours", "vJa": "要確認", "vEn": "TBC"}, {"ja": "定休日", "en": "Closed", "vJa": "要確認", "vEn": "TBC"}, {"ja": "座席", "en": "Seats", "vJa": "要確認", "vEn": "TBC"}, {"ja": "喫煙", "en": "Smoking", "vJa": "要確認", "vEn": "TBC"}, {"ja": "カード", "en": "Cards", "vJa": "要確認", "vEn": "TBC"}, {"ja": "予約", "en": "Booking", "vJa": "要確認", "vEn": "TBC"}], "faq": [{"qJa": "定休日はいつですか？", "qEn": "When are you closed?", "aJa": "要確認", "aEn": "TBC"}, {"qJa": "予約はできますか？", "qEn": "Can I make a reservation?", "aJa": "要確認", "aEn": "TBC"}, {"qJa": "英語のメニューはありますか？", "qEn": "Do you have an English menu?", "aJa": "はい。このページ右上の「EN」で英語表示に切り替えられます。", "aEn": "Yes. Tap “EN” at the top right of this page."}], "catchJa": "ワインと過ごす、\n少し特別な夜に。", "catchEn": "For a slightly special night,\nwith wine.", "introJa": "今泉の路地に佇む「nowhere」。ストウブで炊き上げる看板のご飯と、ワインに寄り添う一皿を。気取らず、でも少しだけ特別な夜をお過ごしください。", "introEn": "Tucked away in Imaizumi, nowhere serves signature rice slow-cooked in Staub and dishes made to go with wine. Relaxed, yet a little special."}, "feats": [{"img": "", "tJa": "ストウブで炊き上げる、看板のご飯", "tEn": "Signature rice, slow-cooked in Staub", "pJa": "ロブスターと蟹、和牛と山椒。ストウブ鍋でじっくり炊き上げる土鍋ご飯は、お酒と一緒に楽しむためのnowhereの看板です。2〜3名様でどうぞ。", "pEn": "Lobster & crab, or Wagyu & sansho. Our Staub pot rice is made to be shared with drinks — perfect for 2–3."}, {"img": "", "tJa": "一皿ごとに、合わせたいワインを", "tEn": "A wine for every plate", "pJa": "メニューには白・赤それぞれのおすすめペアリングを表示。料理とワインの組み合わせを気軽に楽しめます。", "pEn": "Each dish is marked with a recommended white or red pairing, so matching food and wine is easy."}, {"img": "", "tJa": "福岡と各地の、選び抜いた素材", "tEn": "Carefully chosen ingredients", "pJa": "福岡県産のアスパラ、筑後みのう豚、北海道のエゾ鹿。素材の良さを活かした料理をご用意しています。", "pEn": "Fukuoka-grown asparagus, Chikugo Minou pork and Hokkaido Ezo venison, cooked to let them shine."}], "menu": [{"id": "staub", "signature": true, "ja": "nowhereのストウブご飯", "en": "nowhere's Staub Pot Rice", "servesJa": "2〜3名様", "servesEn": "Serves 2–3", "leadJa": "ストウブ鍋でじっくり炊き上げる、お酒と楽しむための看板ご飯。", "leadEn": "Our signature rice, slow-cooked in a Staub cocotte and made to enjoy with drinks.", "items": [{"ja": "ロブスターと蟹の炊き込みご飯", "en": "Lobster & Crab Rice", "price": 2980, "pickup": true, "tags": ["rec"], "img": "", "dJa": "ロブスターの濃厚な出汁で炊き上げ、蟹をたっぷり混ぜ込みました。ロブスターと蟹の深い旨みが重なる、贅沢なひと鍋。", "dEn": "Rice cooked in a rich lobster broth and generously mixed with crab. A luxurious pot where the deep umami of lobster and crab come together."}, {"ja": "和牛と山椒のそぼろご飯", "en": "Wagyu & Sansho Soboro Rice", "price": 2680, "pickup": true, "tags": ["rec"], "img": "", "dJa": "香港で出会った土鍋ご飯から着想。上質な和牛に爽やかな山椒を合わせ、甘辛いそぼろを山椒が引き締める、nowhereならではのストウブご飯。", "dEn": "Inspired by clay-pot rice we discovered in Hong Kong, combining premium Wagyu with bright Japanese sansho pepper. Sweet-savory minced beef is lifted by sansho – a Staub rice dish unique to nowhere."}], "shortJa": "ストウブご飯", "shortEn": "Staub Rice"}, {"id": "cold", "ja": "冷菜", "en": "Cold Dishes", "items": [{"ja": "本日の鮮魚のたたき", "en": "Today's Seared Fresh Fish (Tataki)", "price": 980, "pair": "white"}, {"ja": "キャロットラペ", "en": "Carrot Rapée", "price": 480}, {"ja": "冷製なすのカルパッチョ", "en": "Chilled Eggplant Carpaccio", "price": 680, "noteJa": "ねぎ生姜ソース", "noteEn": "Scallion & ginger sauce"}, {"ja": "自家製ポークハムと焼き野菜のマリネ", "en": "House-Made Pork Ham with Marinated Grilled Vegetables", "price": 980}, {"ja": "シャルキュトリー盛り合わせ", "en": "Assorted Charcuterie", "price": 1680, "noteJa": "単品でもご注文いただけます", "noteEn": "Also available individually."}, {"ja": "パテ・ド・カンパーニュ", "en": "Pâté de Campagne", "price": 850}, {"ja": "自家製ポークハム", "en": "House-Made Pork Ham", "price": 780}, {"ja": "鴨のスモーク", "en": "Smoked Duck", "price": 780}, {"ja": "いちじくバターサンド（1個）", "en": "Fig Butter Sandwich (1 pc)", "price": 450}, {"ja": "ミックスオリーブのマリネ", "en": "Marinated Mixed Olives", "price": 500}, {"ja": "ズッキーニのピクルス", "en": "Pickled Zucchini", "price": 600}, {"ja": "チーズ3種盛り合わせ", "en": "Assorted 3 Cheeses", "price": 1000, "noteJa": "単品 ¥500〜", "noteEn": "Individual cheeses from ¥500"}, {"ja": "自家製スモークサーモンとアボカドタルタルのフォカッチャ（1個）", "en": "House-Smoked Salmon & Avocado Tartare Focaccia (1 pc)", "price": 480}, {"ja": "自家製フォカッチャ（1枚）", "en": "House-Made Focaccia (1 slice)", "price": 150}]}, {"id": "warm", "ja": "温菜", "en": "Warm Dishes", "items": [{"ja": "甘長とうがらしのフリットとサラミ", "en": "Sweet Shishito Fritters & Salami", "price": 680, "noteJa": "アンチョビガーリック", "noteEn": "Anchovy garlic"}, {"ja": "玉ねぎのロースト", "en": "Roasted Onion", "price": 680}, {"ja": "福岡県産アスパラの天ぷら", "en": "Fukuoka-Grown Asparagus Tempura", "price": 700}, {"ja": "さつまいものニョッキ", "en": "Sweet Potato Gnocchi", "price": 880, "noteJa": "バター醤油", "noteEn": "Butter soy sauce"}, {"ja": "舞茸の天ぷら", "en": "Maitake Mushroom Tempura", "price": 980, "pair": "red", "noteJa": "きのこソース", "noteEn": "Mushroom sauce"}, {"ja": "猪と鹿のキーマ春巻き（1本）", "en": "Wild Boar & Venison Keema Spring Roll (1 pc)", "price": 450}, {"ja": "フライドポテト", "en": "French Fries", "price": 600}, {"ja": "鱈のコロッケ タルタルソース（1個）", "en": "Cod Croquette with Tartar Sauce (1 pc)", "price": 480}]}, {"id": "mains", "ja": "メイン", "en": "Mains", "items": [{"ja": "国産牛すね肉のデミグラス煮込み", "en": "Domestic Beef Shank Braised in Demi-Glace", "price": 1780, "pair": "red", "pickup": true}, {"ja": "nowhereスパイシーグリルチキン", "en": "nowhere Spicy Grilled Chicken", "price": 2180, "pair": "red", "pickup": true}, {"ja": "筑後みのう豚の炭火焼き 200g", "en": "Charcoal-Grilled Chikugo Minou Pork, 200 g", "price": 2400, "pair": "white", "noteJa": "マスタードソース", "noteEn": "Mustard sauce", "pickup": true}, {"ja": "北海道産エゾ鹿のロースト 150g〜", "en": "Roasted Hokkaido Ezo Venison, from 150 g", "priceJa": "¥16 / g", "priceEn": "¥16 / g", "pair": "red", "noteJa": "赤ワインソース", "noteEn": "Red wine sauce", "pickup": true}]}, {"id": "pasta", "ja": "パスタ", "en": "Pasta", "items": [{"ja": "からすみの塩レモンパスタ", "en": "Bottarga Salt-Lemon Pasta", "price": 1380, "noteEn": "Bottarga = cured mullet roe"}, {"ja": "濃厚ボロネーゼ", "en": "Rich Bolognese", "price": 1580}, {"ja": "本日のパスタ", "en": "Today's Pasta", "ask": true, "noteJa": "黒板またはスタッフにお尋ねください", "noteEn": "Please see the chalkboard or ask our staff."}]}, {"id": "dessert", "ja": "デザート", "en": "Dessert", "items": [{"ja": "チーズケーキ", "en": "Cheesecake", "price": 600}]}]};
+const FALLBACK = {"store": {"tel": "092-600-3595", "catchJa": "ワインと過ごす、\n少し特別な夜に。", "catchEn": "For a slightly special night,\nwith wine.", "introJa": "今泉のワイン食堂「nowhere」。ストウブで炊き上げる看板のご飯と、ワインに寄り添う一皿を。気取らず、でも少しだけ特別な夜をお過ごしください。", "introEn": "nowhere is a wine dining spot in Imaizumi, Fukuoka. Signature rice slow-cooked in Staub and dishes made to go with wine — relaxed, yet a little special.", "addressJa": "〒810-0021 福岡県福岡市中央区今泉1-13-21 フィル・パーク福岡今泉 2A", "addressEn": "Phil Park Fukuoka Imaizumi 2A, 1-13-21 Imaizumi, Chuo-ku, Fukuoka 810-0021", "routeJa": "", "routeEn": "", "mapUrl": "https://maps.app.goo.gl/CrQ5zZsXfAG9eRSEA", "mapEmbed": "https://www.google.com/maps?q=nowhere%20%E4%BB%8A%E6%B3%89%E3%81%AE%E3%83%AF%E3%82%A4%E3%83%B3%E9%A3%9F%E5%A0%82%20%E7%A6%8F%E5%B2%A1%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%BB%8A%E6%B3%891-13-21&z=17&output=embed", "heroImg": "img/hero.jpg", "gallery": ["img/g-interior.jpg", "img/g-spread.jpg", "img/g-wine.jpg", "img/g-counter.jpg", "img/g-sign.jpg"], "info": [{"ja": "営業時間", "en": "Hours", "vJa": "12:00〜23:00", "vEn": "12:00–23:00"}, {"ja": "定休日", "en": "Closed", "vJa": "不定休\n（お休みはInstagramでお知らせします）", "vEn": "Irregular\n(closures are announced on Instagram)"}, {"ja": "住所", "en": "Address", "vJa": "福岡市中央区今泉1-13-21\nフィル・パーク福岡今泉 2A", "vEn": "2A, 1-13-21 Imaizumi, Chuo-ku, Fukuoka"}], "faq": [], "instagram": {"url": "https://www.instagram.com/nowhere.fukuoka/", "handle": "nowhere.fukuoka", "images": ["img/ig1.jpg", "img/ig2.jpg", "img/ig3.jpg", "img/ig4.jpg", "img/ig5.jpg", "img/ig6.jpg", "img/ig7.jpg", "img/ig8.jpg", "img/ig9.jpg"]}}, "feats": [{"img": "img/feat-staub.jpg", "tJa": "ストウブで炊き上げる、看板のご飯", "tEn": "Signature rice, slow-cooked in Staub", "pJa": "オマール海老と蟹、和牛と山椒。ストウブ鍋でじっくり炊き上げる釜ご飯は、お酒と一緒に楽しむためのnowhereの看板です。2〜3名様でどうぞ。", "pEn": "Lobster & crab, or Wagyu & sansho. Our Staub pot rice is made to be shared with drinks — perfect for 2–3."}, {"img": "img/feat-wine.jpg", "tJa": "一皿ごとに、合わせたいワインを", "tEn": "A wine for every plate", "pJa": "メニューには白・赤それぞれのおすすめペアリングを表示。料理とワインの組み合わせを気軽に楽しめます。", "pEn": "Each dish is marked with a recommended white or red pairing, so matching food and wine is easy."}, {"img": "img/feat-ingredients.jpg", "tJa": "福岡と各地の、選び抜いた素材", "tEn": "Carefully chosen ingredients", "pJa": "福岡県産のアスパラ、筑後みのう豚、北海道のエゾ鹿。素材の良さを活かした料理をご用意しています。", "pEn": "Fukuoka-grown asparagus, Chikugo Minou pork and Hokkaido Ezo venison, cooked to let them shine."}], "menu": [{"id": "staub", "signature": true, "ja": "nowhereのストウブご飯", "en": "nowhere's Staub Pot Rice", "shortJa": "ストウブご飯", "shortEn": "Staub Rice", "servesJa": "2〜3人前", "servesEn": "Serves 2–3", "leadJa": "ストウブ鍋でじっくり炊き上げる、お酒と楽しむための看板ご飯。", "leadEn": "Our signature rice, slow-cooked in a Staub cocotte and made to enjoy with drinks.", "items": [{"ja": "オマール・クラブご飯", "en": "Lobster & Crab Rice", "price": 2980, "pickup": true, "tags": ["rec"], "img": "img/lobster-rice.jpg", "dJa": "オマール海老の濃厚な出汁で炊き上げ、ふんだんに蟹を混ぜ込んだ一釜。海老と蟹の旨味が重なる、贅沢なストウブご飯。", "dEn": "Rice cooked in a rich lobster broth and generously mixed with crab. A luxurious pot where the deep umami of lobster and crab come together."}, {"ja": "和牛山椒そぼろご飯", "en": "Wagyu & Sansho Soboro Rice", "price": 2680, "pickup": true, "tags": ["rec"], "img": "img/soboro-rice.jpg", "dJa": "香港で出会った土鍋ご飯の味わいをベースに、上質な和牛と爽やかな山椒を合わせた一品。甘辛いそぼろのコクに、山椒の香りが抜ける“今ここ”でしか味わえないストウブご飯。", "dEn": "Inspired by clay-pot rice we discovered in Hong Kong, combining premium Wagyu with bright Japanese sansho pepper. Sweet-savory minced beef is lifted by sansho – a Staub rice dish unique to nowhere."}]}, {"id": "cold", "ja": "冷菜", "en": "Cold Dishes", "items": [{"ja": "本日の鮮魚のたたき", "en": "Today's Seared Fresh Fish (Tataki)", "price": 980, "pair": "white", "img": "img/fish-tataki.jpg"}, {"ja": "キャロットラペ", "en": "Carrot Rapée", "price": 480}, {"ja": "冷たいトロ茄子のカルパッチョ", "en": "Chilled Eggplant Carpaccio", "price": 680, "noteJa": "葱生姜ダレ", "noteEn": "Scallion & ginger sauce"}, {"ja": "自家製ポークハムと焼き野菜のマリネ", "en": "House-Made Pork Ham with Marinated Grilled Vegetables", "price": 980}, {"ja": "シャルキュトリー盛り合わせ", "en": "Assorted Charcuterie", "price": 1680, "noteJa": "単品でもご注文いただけます", "noteEn": "Also available individually.", "img": "img/charcuterie.jpg"}, {"ja": "パテ・ド・カンパーニュ", "en": "Pâté de Campagne", "price": 850, "img": "img/pate.jpg"}, {"ja": "自家製ポークハム", "en": "House-Made Pork Ham", "price": 780}, {"ja": "鴨葱くん", "en": "Smoked Duck", "price": 780, "img": "img/kamo.jpg"}, {"ja": "イチジクバターサンド（1個）", "en": "Fig Butter Sandwich (1 pc)", "price": 450}, {"ja": "ミックスオリーブマリネ", "en": "Marinated Mixed Olives", "price": 500}, {"ja": "ズッキーニのピクルス", "en": "Pickled Zucchini", "price": 600}, {"ja": "チーズ3種盛り合わせ", "en": "Assorted 3 Cheeses", "price": 1000, "noteJa": "単品 ¥500〜", "noteEn": "Individual cheeses from ¥500"}, {"ja": "自家製スモークサーモンとアボカドタルタルのフォカッチャ（1個）", "en": "House-Smoked Salmon & Avocado Tartare Focaccia (1 pc)", "price": 480}, {"ja": "自家製フォカッチャ（1枚）", "en": "House-Made Focaccia (1 slice)", "price": 150}]}, {"id": "warm", "ja": "温菜", "en": "Warm Dishes", "items": [{"ja": "甘長とうがらしのフリットとサラミ", "en": "Sweet Shishito Fritters & Salami", "price": 680, "noteJa": "アンチョビガーリック", "noteEn": "Anchovy garlic"}, {"ja": "玉ねぎロースト", "en": "Roasted Onion", "price": 680}, {"ja": "福岡県産アスパラの天ぷら", "en": "Fukuoka-Grown Asparagus Tempura", "price": 700, "img": "img/asparagus.jpg"}, {"ja": "サツマイモのニョッキ", "en": "Sweet Potato Gnocchi", "price": 880, "noteJa": "バター醤油", "noteEn": "Butter soy sauce"}, {"ja": "舞茸の天ぷら", "en": "Maitake Mushroom Tempura", "price": 980, "pair": "red", "noteJa": "マッシュルームソース添え", "noteEn": "Mushroom sauce", "pickup": true, "img": "img/maitake.jpg"}, {"ja": "猪鹿キーマ春巻き（1本）", "en": "Wild Boar & Venison Keema Spring Roll (1 pc)", "price": 450, "img": "img/harumaki.jpg"}, {"ja": "フライドポテト", "en": "French Fries", "price": 600}, {"ja": "鱈のコロッケ タルタルソース（1個）", "en": "Cod Croquette with Tartar Sauce (1 pc)", "price": 480}]}, {"id": "mains", "ja": "メイン", "en": "Mains", "items": [{"ja": "国産牛スネ肉のデミグラス煮込み", "en": "Domestic Beef Shank Braised in Demi-Glace", "price": 1780, "pair": "red", "pickup": true, "img": "img/beef-shank.jpg"}, {"ja": "nowhereスパイシーチキングリル", "en": "nowhere Spicy Grilled Chicken", "price": 2180, "pair": "red", "pickup": true, "img": "img/chicken.jpg"}, {"ja": "筑後みのう豚の炭火焼き 200g", "en": "Charcoal-Grilled Chikugo Minou Pork, 200 g", "price": 2400, "pair": "white", "noteJa": "マスタードソース", "noteEn": "Mustard sauce", "img": "img/pork.jpg"}, {"ja": "北海道産エゾ鹿のロースト 150g〜", "en": "Roasted Hokkaido Ezo Venison, from 150 g", "priceJa": "¥16 / g", "priceEn": "¥16 / g", "pair": "red", "noteJa": "赤ワインソース", "noteEn": "Red wine sauce", "pickup": true, "img": "img/venison.jpg"}]}, {"id": "pasta", "ja": "パスタ", "en": "Pasta", "items": [{"ja": "カラスミの塩レモンパスタ", "en": "Bottarga Salt-Lemon Pasta", "price": 1380, "noteEn": "Bottarga = cured mullet roe"}, {"ja": "濃厚ボロネーゼ", "en": "Rich Bolognese", "price": 1580}, {"ja": "本日のパスタ", "en": "Today's Pasta", "ask": true, "noteJa": "黒板またはスタッフにお尋ねください", "noteEn": "Please see the chalkboard or ask our staff."}]}, {"id": "dessert", "ja": "デザート", "en": "Dessert", "items": [{"ja": "チーズケーキ", "en": "Cheesecake", "price": 600}]}]};
 let STORE = {}, FEATS = [], MENU = [];
 
 /* ---------- 固定の文言 ---------- */
 const T = {
-  ja:{catch:"ワインと過ごす、<br>少し特別な夜に。",intro:"",
+  ja:{catch:"ワインと過ごす、<br>少し特別な夜に。",intro:"",kind:"今泉のワイン食堂",hInsta:"最新の様子はインスタグラムで",igBio:"今泉のワイン食堂",follow:"フォロー",igMore:"Instagramで投稿をもっと見る",
       navMenu:"メニュー",navFeat:"こだわり",navInfo:"店舗情報",navAccess:"アクセス",navFaq:"よくある質問",
       hMenu:"おすすめメニュー",hFeat:"お店のこだわり",hInfo:"店舗情報",hAccess:"アクセス",hFaq:"よくある質問",
       allMenu:"すべてのメニューを見る",seeMenu:"メニューを見る",call:"電話する",openMap:"Googleマップで開く",back:"戻る",
@@ -340,7 +378,7 @@ const T = {
       search:"メニューを探す",empty:"該当するメニューがありません",
       note:"表示価格は税抜です（下段は税込価格）。<br>アレルギーのある方はスタッフまでお申し付けください。",
       rec:"おすすめ",new:"NEW",white:"白ワインと",red:"赤ワインと",legend:"おすすめのワインペアリング",taxin:"税込",ask:"スタッフまで",soldout:"本日終了"},
-  en:{catch:"For a slightly special night,<br>with wine.",intro:"",
+  en:{catch:"For a slightly special night,<br>with wine.",intro:"",kind:"WINE DINING · IMAIZUMI",hInsta:"See what's new on Instagram",igBio:"Wine dining in Imaizumi, Fukuoka",follow:"Follow",igMore:"See more on Instagram",
       navMenu:"Menu",navFeat:"Our Story",navInfo:"Info",navAccess:"Access",navFaq:"FAQ",
       hMenu:"Recommended",hFeat:"What we care about",hInfo:"Store information",hAccess:"How to find us",hFaq:"Questions",
       allMenu:"See full menu",seeMenu:"View menu",call:"Call",openMap:"Open in Google Maps",back:"Back",
@@ -364,7 +402,7 @@ const L = (o,k)=>o[k+(lang==="ja"?"Ja":"En")];
 const yen = n=>"¥"+Number(n).toLocaleString();
 const nm = o=>esc(o[lang]||o.ja||o.en);
 const other = o=>esc(lang==="ja"?o.en:o.ja);
-const safeUrl = u=>(typeof u==="string" && (/^img\/uploads\/[\w.-]+$/.test(u) || /^https:\/\/[^\s'"()<>\\]+$/.test(u))) ? u : "";
+const safeUrl = u=>(typeof u==="string" && (/^img\/[\w.\/-]+$/.test(u) || /^https:\/\/[^\s'"()<>\\]+$/.test(u))) ? u : "";
 const bg = src=>{ const u=safeUrl(src); return u?`style="background-image:url('${u}')"`:""; };
 const isTodo = v=>/要確認|TBC/.test(v||"");
 const vis = c=>(c.items||[]).filter(i=>!i.hidden);
@@ -411,15 +449,19 @@ function renderHome(){
   $("#infoDl").innerHTML = (STORE.info||[]).map(r=>{const v=L(r,"v");return `<dt>${nm(r)}</dt><dd class="${isTodo(v)?"todo":""}">${escBr(v)}</dd>`}).join("")
     + (tel?`<dt>TEL</dt><dd><a href="tel:${tel.replace(/[^0-9+]/g,"")}">${esc(tel)}</a></dd>`:"");
 
-  const emb = /^https:\/\/www\.google\.com\/maps\/embed\?[^\s'"<>\\]+$/.test(STORE.mapEmbed||"") ? STORE.mapEmbed : "";
+  const emb = /^https:\/\/(www|maps)\.google\.com\/maps(\/embed)?\?[^\s'"<>\\]+$/.test(STORE.mapEmbed||"") ? STORE.mapEmbed : "";
   $("#map").innerHTML = emb ? `<iframe src="${esc(emb)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="map"></iframe>` : `<div class="ph">${T[lang].mapPh}</div>`;
   $("#addr").textContent = L(STORE,"address")||"";
   $("#route").textContent = L(STORE,"route")||"";
   const mu = /^https:\/\//.test(STORE.mapUrl||"") ? STORE.mapUrl : "";
   $("#mapBtn").style.display = mu?"":"none"; $("#mapBtn").href = mu||"#";
 
-  $("#faq").innerHTML = (STORE.faq||[]).map(f=>`<details><summary>${esc(L(f,"q"))}</summary><div class="a">${escBr(L(f,"a"))}</div></details>`).join("");
-  $("#s-faq").style.display = (STORE.faq||[]).length?"":"none";
+  const ig = STORE.instagram || {};
+  const igUrl = /^https:\/\/(www\.)?instagram\.com\//.test(ig.url||"") ? ig.url : "";
+  ["#igMini","#igAva","#igFollow","#igFoot","#igFooter"].forEach(s=>{ const a=$(s); if(a){ a.href=igUrl||"#"; a.style.display=igUrl?"":"none"; } });
+  $("#igName").textContent = ig.handle ? "@"+ig.handle : "";
+  $("#igGrid").innerHTML = (ig.images||[]).filter(safeUrl).slice(0,9).map(s=>`<a href="${esc(igUrl)}" target="_blank" rel="noopener" aria-label="Instagram" style="background-image:url('${safeUrl(s)}')"></a>`).join("");
+  $("#s-insta").style.display = igUrl?"":"none";
 
   ["#telBtn","#telMini"].forEach(s=>{ const a=$(s); if(tel){a.href="tel:"+tel.replace(/[^0-9+]/g,"");a.style.display="";} else a.style.display="none"; });
   $(".dock").style.gridTemplateColumns = tel?"1fr 1fr":"1fr";
@@ -431,7 +473,7 @@ function renderMenuChrome(){
   $("#chips").innerHTML = MENU.filter(c=>vis(c).length).map((c,i)=>`<button class="chip${i===0?" on":""}" data-id="${esc(c.id)}">${esc(L(c,"short")||c[lang]||c.ja)}</button>`).join("");
   filter();
 }
-function filter(){
+let filter = function(){
   const q = $("#q").value.trim().toLowerCase();
   let count = 0;
   $("#menu").innerHTML = MENU.map(c=>{
@@ -463,7 +505,7 @@ function filter(){
   observe();
 }
 
-function render(){
+let render = function(){
   document.documentElement.lang = lang;
   $$("[data-i18n]").forEach(el=>el.innerHTML=T[lang][el.dataset.i18n]);
   $$("[data-i18n-ph]").forEach(el=>el.placeholder=T[lang][el.dataset.i18nPh]);
@@ -511,7 +553,7 @@ document.addEventListener("click",e=>{
 });
 $("#ov").onclick = closeSheet; $("#sClose").onclick = closeSheet;
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet(); });
-$("#q").addEventListener("input",filter);
+$("#q").addEventListener("input",()=>filter());
 
 /* メニューページ：スクロール連動チップ（ページは動かさずチップ列だけ横移動） */
 let lockUntil = 0, currentId = null;
@@ -535,10 +577,26 @@ const io2 = new IntersectionObserver(es=>{
 },{rootMargin:"-100px 0px -65% 0px"});
 $$("#home .block").forEach(b=>io2.observe(b));
 
+/* ---------- 写真の遅延読み込み ---------- */
+const lazyIO = "IntersectionObserver" in window ? new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){ const el=en.target; el.style.backgroundImage=el.dataset.bg; delete el.dataset.bg; lazyIO.unobserve(el); } });
+},{rootMargin:"300px 0px"}) : null;
+function lazify(root){
+  if(!lazyIO) return;
+  root.querySelectorAll('[style*="background-image"]').forEach(el=>{
+    if(el.id==="heroImg") return;
+    el.dataset.bg = el.style.backgroundImage; el.style.backgroundImage = ""; lazyIO.observe(el);
+  });
+}
+const _render = render;
+render = function(){ _render(); lazify(document); };
+const _filter = filter;
+filter = function(){ _filter(); lazify($("#menu")); };
+
 /* ---------- 起動 ---------- */
 (async function init(){
   let d = null;
-  try{ const r = await fetch("data.json?v="+Date.now(), {cache:"no-store"}); if(r.ok) d = await r.json(); }catch(e){}
+  
   d = d || FALLBACK || {store:{},feats:[],menu:[]};
   STORE = d.store || {}; FEATS = d.feats || [];
   MENU = (d.menu||[]).map((c,ci)=>({...c, items:(c.items||[]).map((it,ii)=>({...it,_k:ci+"-"+ii}))}));
